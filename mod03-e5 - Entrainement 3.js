@@ -1,20 +1,49 @@
 // -----------------------------------
 console.log("1/ Implémentez une fonction qui transforme un texte en camelCase.");
 
-function transformTextToCamelcase (text) {
-    let words = text.replace(" ", "");
-    return words;
+function transformTextToCamelcase(text) {
+    let words = text.split(' ');
+    words = words.map(function (word, index) {
+        if (index === 0) {
+            return word.toLowerCase();
+        }
+        return word.charAt(0).toUpperCase() + word.slice(1);
+    })
+    return words.join('');
 }
+
 console.log(transformTextToCamelcase("Salut les copains wesh"));
 
 // -----------------------------------
 console.log("2/ Implémentez une fonction qui retourne le plus grand mot d'un texte.");
-
-console.log();
+function getBigWord(text) {
+    let words = text.split(' ');
+    let bigWord = [];
+    words = words.map(function (word) {
+        return word.split("");
+    })
+    for (const word of words) {
+        if (word.length > bigWord.length) {
+            bigWord = word;
+        }
+    }
+    return bigWord.join("");
+    // if (words.length > bigWord.length)
+}
+console.log(getBigWord("Coucou les lapinous c'est pas tres CharliChaplin ce truc!"));
 
 // -----------------------------------
 console.log("3/ Implémentez une fonction qui converti un nombre de seconde en un tableau exprimant cette durée en secondes, minutes, heures, jours, semaines et années.");
-
+function getSecMinHouDayWeeYear(seconds){
+    let array = [{
+        secondes : 0,
+        minutes : 0,
+        heures : 0,
+        jours : 0,
+        semaines : 0,
+        années : 0
+    }];
+}
 console.log();
 
 // -----------------------------------
@@ -35,7 +64,7 @@ console.log();
 // -----------------------------------
 console.log("7/ Retournez la liste des prenoms des joueurs ci-dessous par ordre de score décroissant.");
 
-const players  = {
+const players = {
     Camille: 88,
     Lola: 125,
     Isaac: 174,
